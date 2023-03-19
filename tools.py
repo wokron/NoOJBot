@@ -39,7 +39,7 @@ class MetricsClass:
             input_variables=["code"],
             template=prompts.METRICS_CLASS_TEMPLATE
         )
-        self.chain = LLMChain(llm, prompt)
+        self.chain = LLMChain(llm=llm, prompt=prompt)
 
     def __call__(self, code_file_path):
         metrics_result = self.chain.run(read_file(code_file_path))
@@ -52,7 +52,7 @@ class Modify:
             input_variables=["code", "instruction"],
             template=prompts.MODIFY_CODE_TEMPLATE
         )
-        self.chain = LLMChain(llm, prompt)
+        self.chain = LLMChain(llm=llm, prompt=prompt)
 
     def __call__(self, inputs):
         split_inputs = inputs.split(',')
