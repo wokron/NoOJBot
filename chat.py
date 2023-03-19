@@ -15,6 +15,6 @@ if __name__ == "__main__":
         if input_str.lower() == "quit" or input_str.lower() == "q":
             break
 
-        print(bot(input_str))
+        print("NoOJBot:" + bot(input_str))
 
     print("quit success")
