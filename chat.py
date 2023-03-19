@@ -1,11 +1,13 @@
-import os
-
 from bot import NoOJBot
+from utils import get_parser, set_openai_key
 
 if __name__ == "__main__":
-    os.environ["OPENAI_API_KEY"] = "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"
+    parser = get_parser()
+    args = parser.parse_args()
 
-    bot = NoOJBot("E:/Study/code/java/NoOJ-Metrics-Kit/src/main/java/")
+    set_openai_key()
+
+    bot = NoOJBot(args.ppath, args.mpath, args.dbg, args.mmem)
 
     while True:
         input_str = input("User:")
