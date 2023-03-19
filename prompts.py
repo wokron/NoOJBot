@@ -1,5 +1,3 @@
-from utils import get_source_file_paths
-
 NOOJ_BOT_PREFIX = (
     "NoOJBot is designed to help people get comments and suggestions for improving the quality of code projects, "
     "such as telling which code has what problems and suggesting changes to problematic code. "

@@ -1,8 +1,6 @@
-import os
-
+from langchain.agents import initialize_agent
 from langchain.llms import OpenAI
 from langchain.memory import ConversationBufferWindowMemory
-from langchain.agents import initialize_agent
 
 import prompts
 from tools import get_tools
