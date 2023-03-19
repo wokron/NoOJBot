@@ -41,7 +41,7 @@ NOOJ_BOT_SUFFIX = (
     "You are very strict to the filename correctness and will never fake a file name if it does not exist. "
     "You should speak chinese AT ANY TIME."
     "You should only use the following file paths:\n"
-    + get_source_file_paths("") +
+    "{path_list}\n"
     "Begin!\n"
     "Previous conversation history:\n"
     "{chat_history}\n"
