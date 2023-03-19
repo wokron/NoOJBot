@@ -70,3 +70,33 @@ MODIFY_CODE_TEMPLATE = (
     "Code:{code}"
 )
 
+METRICS_PROJECT_DESC = (
+    "useful when you want to metrics the entire project through the evaluation tool."
+    "you can only call this method at most once."
+    "no input is required."
+    "the output is the metrics report of the evaluation tool"
+)
+
+METRICS_CLASS_DESC = (
+    "useful when you want to evaluate a source code file in more detail."
+    "you should use MetricsProject tool to obtain the overall analyze of the project "
+    "before you use this tool to metrics a file in detail."
+    "the input is the path to the source code file. You must enter a real file path"
+    "the output is a detailed analyze report of the source code file."
+)
+
+READ_FILE_DESC = (
+    "useful to get the content of the file."
+    "because of token limitations, you can not use this tool for one file more than one time."
+    "the input is the path to the source code file. You must enter a real file path."
+    "the output is all the contents of the file."
+)
+
+MODIFY_DESC = (
+    "useful when you want to get some advice on how to modify the code in detail. "
+    "you need to indicate which modifications you want to make."
+    "the input to this tool should be a COMMA separated string of two. "
+    "the first part indicates the file path of the source code,"
+    "and the second part represents the modification you want to make, "
+    "such as \"split the Course class into two classes to increase its cohesion\"."
+)
