@@ -98,3 +98,28 @@ MODIFY_DESC = (
     "and the second part represents the modification you want to make, "
     "such as \"split the Course class into two classes to increase its cohesion\"."
 )
+
+LLM_METRICS_PICK = (
+    "Please identify the content related to the {class_name} class in this code evaluation report "
+    "and output it in the same format as the report. "
+    "You must only output content related to the {class_name} class "
+    "and absolutely cannot output content unrelated to the {class_name} class.\n"
+    "Code evaluation report: {report_info}\n"
+    "your output MUST be chinese"
+)
+
+LLM_METRICS_ANALYZE = (
+    "Please analyze the source code based on the following code evaluation report "
+    "and provide a more detailed analysis of the {class_name} class. "
+    "Please ignore any content in the report that is not related to the {class_name} class.\n"
+    "Code evaluation report: {report}\n"
+    "Source code: {code}\n"
+    "your output MUST be chinese"
+)
+
+LLM_METRICS_SUMMARY = (
+    "Here is a code evaluation report. "
+    "Please summarize the contents of the report and provide suggestions for improvements.\n"
+    "{metrics_list}\n"
+    "your output MUST be chinese"
+)
