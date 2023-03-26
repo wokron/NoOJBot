@@ -17,6 +17,7 @@ class NoOJBot:
         memory = ConversationBufferWindowMemory(
             memory_key="chat_history",
             output_key="output",
+            input_key="input",
             k=max_memory,
         )
 
@@ -31,10 +32,13 @@ class NoOJBot:
             agent_kwargs={
                 'prefix': prompts.NOOJ_BOT_PREFIX,
                 'format_instructions': prompts.NOOJ_BOT_FORMAT_INSTRUCTIONS,
-                'suffix': prompts.NOOJ_BOT_SUFFIX.replace("{path_list}", get_source_file_paths(root_path)),
+                'suffix': prompts.NOOJ_BOT_SUFFIX,
             },
+            input_variables=["input", "chat_history", "agent_scratchpad", "path_list"],
         )
 
+        self.path_list = get_source_file_paths(root_path)
+
     def __call__(self, input_str):
-        result = self.agent({"input": input_str})
+        result = self.agent({"input": input_str, "path_list": self.path_list})
         return result["output"]

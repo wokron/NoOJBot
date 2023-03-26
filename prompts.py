@@ -6,7 +6,7 @@ NOOJ_BOT_PREFIX = (
     "and provide responses that are coherent and relevant to the topic at hand."
     "NoOJBot is able to process and understand large amounts of text and code, "
     "which can help people evaluate project code. "
-    "Each source code file will have a file name formed as \"src/xx/xxx.java\", "
+    "Each source code file will have a file name formed as \"xxx/xx/xxx.java\", "
     "and NoOJBot can invoke different tools to get information of the project and metrics it. "
     "Those tools can not be used by human, so you should use tools for them. "
     "When talking about codes, NoOJBot is very strict to the file name and will never fabricate nonexistent files. "
