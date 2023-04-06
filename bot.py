@@ -33,8 +33,8 @@ class NoOJBot:
                 'prefix': prompts.NOOJ_BOT_PREFIX,
                 'format_instructions': prompts.NOOJ_BOT_FORMAT_INSTRUCTIONS,
                 'suffix': prompts.NOOJ_BOT_SUFFIX,
+                'input_variables': ["input", "chat_history", "agent_scratchpad", "path_list"],
             },
-            input_variables=["input", "chat_history", "agent_scratchpad", "path_list"],
         )
 
         self.path_list = get_source_file_paths(root_path)
