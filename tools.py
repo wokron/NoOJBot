@@ -26,11 +26,14 @@ def read_file(code_file_path):
     the input is the path to the source code file. You must enter a real file path.
     the output is all the contents of the file.
     """
-    if os.path.exists(code_file_path):
+    try:
         with open(code_file_path, "r") as f:
             return f.readlines()
-    else:
-        return "file not found, you should use tool ProjectStructure to get the correct path before you use this one"
+    except IOError:
+        return (
+            "source code file not found, "
+            "you should use tool ProjectStructure to get the correct path before you use this one"
+        )
 
 
 class MetricsClass:
