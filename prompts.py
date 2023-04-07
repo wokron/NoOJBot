@@ -123,3 +123,12 @@ LLM_METRICS_SUMMARY = (
     "{metrics_list}\n"
     "your output MUST be chinese"
 )
+
+LLM_METRICS_MODIFY = (
+    "Please modify the source code of the {class_name} class based on the code review feedback. "
+    "You only need to output the modified source code and provide explanations "
+    "for the modifications in the form of comments.\n"
+    "Code Review: {analyze_output}\n"
+    "Source Code: {code}\n"
+    "you MUST write the explanations for the modifications in Chinese."
+)

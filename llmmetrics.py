@@ -21,13 +21,21 @@ class LLMMetrics:
             template=prompts.LLM_METRICS_ANALYZE,
         )
         analyze_source_code_chain = LLMChain(
-            llm=llm, prompt=analyze_source_code_prompt, output_key="output", verbose=verbose
+            llm=llm, prompt=analyze_source_code_prompt, output_key="analyze_output", verbose=verbose
+        )
+
+        code_modify_prompt = PromptTemplate(
+            input_variables=["code", "analyze_output", "class_name"],
+            template=prompts.LLM_METRICS_MODIFY,
+        )
+        code_modify_chain = LLMChain(
+            llm=llm, prompt=code_modify_prompt, output_key="code_modify", verbose=verbose
         )
 
         self.metrics_chain = SequentialChain(
-            chains=[pick_related_report_chain, analyze_source_code_chain],
+            chains=[pick_related_report_chain, analyze_source_code_chain, code_modify_chain],
             input_variables=["class_name", "code", "report_info"],
-            output_variables=["output", "report"],
+            output_variables=["analyze_output", "report", "code_modify"],
             verbose=verbose,
         )
 
@@ -69,10 +77,11 @@ class LLMMetrics:
                 })
                 print(f"评价{file}完成")
 
-                metrics_result_list[class_name] = metrics_result["output"]
+                metrics_result_list[class_name] = (metrics_result["analyze_output"], metrics_result["code_modify"])
 
         print(f"开始进行总结")
-        result = self.summarize_chain.run(str(metrics_result_list))
+        result_without_modify = {k: v[0] for k, v in metrics_result_list.items()}
+        result = self.summarize_chain.run(str(result_without_modify))
         print(f"总结完成")
 
         return metrics_result_list, result
