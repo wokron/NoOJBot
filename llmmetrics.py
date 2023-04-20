@@ -7,7 +7,9 @@ import prompts
 
 
 class LLMMetrics:
-    def __init__(self, llm, verbose=False):
+    def __init__(self, llm, verbose=False, output_middle=True):
+        self.output_middle = output_middle
+
         pick_related_report_prompt = PromptTemplate(
             input_variables=["class_name", "report_info"],
             template=prompts.LLM_METRICS_PICK,
@@ -66,7 +68,7 @@ class LLMMetrics:
                     continue
 
                 source_code_path = os.path.join(root, file)
-                with open(source_code_path, "r") as f:
+                with open(source_code_path, "r", encoding="utf-8") as f:
                     source_code = "\n".join(f.readlines())
 
                 print(f"开始评价文件：{file}...")

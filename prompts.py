@@ -105,7 +105,8 @@ LLM_METRICS_PICK = (
     "You must only output content related to the {class_name} class "
     "and absolutely cannot output content unrelated to the {class_name} class.\n"
     "Code evaluation report: {report_info}\n"
-    "your output MUST be chinese"
+    "all your output line MUST has {class_name} and you MUST describe the problem happened on it."
+    # "your output MUST be chinese"
 )
 
 LLM_METRICS_ANALYZE = (
@@ -114,6 +115,10 @@ LLM_METRICS_ANALYZE = (
     "Please ignore any content in the report that is not related to the {class_name} class.\n"
     "Code evaluation report: {report}\n"
     "Source code: {code}\n"
+    "you CAN NOT just describe the code in your words AT ANY TIME.\n"
+    "every sentence you say must cite the code evaluation report\n"
+    "You can organize your report according to the following structure:"
+    "1. Problems in the code; 2. The consequences of this problem; 3. How to improve the code"
     "your output MUST be chinese"
 )
 
@@ -121,6 +126,7 @@ LLM_METRICS_SUMMARY = (
     "Here is a code evaluation report. "
     "Please summarize the contents of the report and provide suggestions for improvements.\n"
     "{metrics_list}\n"
+    "every sentence you say must cite the code evaluation report\n"
     "your output MUST be chinese"
 )
 
@@ -130,5 +136,6 @@ LLM_METRICS_MODIFY = (
     "for the modifications in the form of comments.\n"
     "Code Review: {analyze_output}\n"
     "Source Code: {code}\n"
+    "every code line you modify must cite the code review result.\n"
     "you MUST write the explanations for the modifications in Chinese."
 )
